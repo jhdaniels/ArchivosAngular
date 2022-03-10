@@ -1,0 +1,17 @@
+<div class="container">
+  <header>
+    <h3 class="bg-dark text-white p-4 text-center">Cargue aquí sus archivos</h3>
+  </header>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="flArchivo">Subir archivo</label>
+      <input type="file" formControlName="flArchivo" name="flArchivo" id="flArchivo" class="form-control"
+      (change)="uploadImage($event)" [ngClass]="{ 'is-invalid': submitted && formulario.flArchivo.errors }" multiple>
+
+      <div *ngIf="submitted && formulario.flArchivo.errors" class="invalid-feedback">
+        <div *ngIf="formulario.flArchivo.errors.required">Por favor, adjunte el archivo</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-dark btn-sm mt-4">Subir</button>
+  </form>
+</div>
